@@ -35,6 +35,8 @@ describe("addToCart()", function() {
   var globalvar;
 
   it("properly structures the cart item as object with a key of `itemName` and the corresponding value { itemName: itemName } format", function() {
+    var empty = [];
+    setCart(empty);
     addToCart("daikon");
      
     let itemName = getCart()[0].itemName;
