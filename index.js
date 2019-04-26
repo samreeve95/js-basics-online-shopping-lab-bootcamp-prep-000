@@ -1,5 +1,10 @@
 var cart = [];
 
+function out(text)
+{
+  console.log(text); // This is for use in index-test.js, please delete when finished.
+}
+
 function getCart() {
  return cart;
 }
@@ -19,8 +24,8 @@ function addToCart(item) {
  // write your code here
  var c = getCart();
  var obj = {};
- obj.itemName = item;
- obj.itemPrice = c.length + 1;
+ obj.itemName = [item];
+ obj.itemPrice = Math.floor(Math.random()*99) + 1;
  c.push(obj); 
  return `${item} has been added to your cart.`;
 }

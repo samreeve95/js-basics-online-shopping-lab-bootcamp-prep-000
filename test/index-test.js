@@ -1,7 +1,8 @@
 /*global afterEach, beforeEach, describe, it */
 
 beforeEach(function() {
-  setCart([]);
+  var empty = [];
+  setCart(empty);
 
   expect.spyOn(console, "log");
 });
@@ -10,10 +11,12 @@ afterEach(function() {
   expect.restoreSpies();
 });
 
+
+
 describe("addToCart()", function() {
   it("can add items to the cart", function() {
     addToCart("apples");
-
+    
     expect(getCart().length).toEqual(1);
 
     addToCart("bananas");
@@ -29,13 +32,20 @@ describe("addToCart()", function() {
     expect(itemConstructor).toEqual(Object);
   });
 
+  var globalvar;
+
   it("properly structures the cart item as object with a key of `itemName` and the corresponding value { itemName: itemName } format", function() {
     addToCart("daikon");
-
+     
     let itemName = getCart()[0].itemName;
-
+    globalvar = itemName;
     expect(itemName).toEqual("daikon");
+    
+   
   });
+  
+  console.log("globalvar :" + globalvar);
+  
 
   it("sets the price (integer between 1 and 100) on the cart object using the key `price`", function() {
     addToCart("eggplant");
@@ -48,6 +58,7 @@ describe("addToCart()", function() {
 
   it("chooses the price at random", function() {
     // Note: this test has a 1-in-10,000 chance of a false negative.
+    
     addToCart("figs");
     addToCart("grapes");
     addToCart("halloumi");
